@@ -88,7 +88,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                 os.path.join(r'C:\Users\Ripo\OneDrive\Desktop\PyCourse\portfolio\portfolio', 'templates'),
+                 os.path.join(Path(__file__).resolve().parent, 'templates'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
