@@ -1,0 +1,8 @@
+*.sql*
+media/*
+
+*/migrations/*
+*/__pycache__/*
+
+env
+env/*
