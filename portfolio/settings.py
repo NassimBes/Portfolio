@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     
     'homepage',
+    
 ]
 
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 15 * 1024 * 1024
