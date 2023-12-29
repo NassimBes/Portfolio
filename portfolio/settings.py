@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     
     'homepage',
+    'streams',
     
 ]
 
@@ -90,6 +91,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
                  os.path.join(Path(__file__).resolve().parent, 'templates'),
+                 os.path.join(BASE_DIR, "streams/templates"),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
