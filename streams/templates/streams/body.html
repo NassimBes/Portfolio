@@ -1,14 +1,13 @@
-{% load static wagtailcore_tags wagtailimages_tags %}
-
-<div class="container px-4 px-lg-5">
+{% load static wagtailimages_tags %}
+<section class="about-section text-center" id="about">
+  <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-8">
-            <h2 class="text-white mb-4">{{self.title}}</h2>
-            <p class="text-white-50">
-                    {{self.desc}}
-            </p>
-        </div>
-</div>
-{% image self.images format-avif as image_avif %}
-<img class="img-fluid" srcset="{{ image_avif.url }}" type="image/avif" />
-</div>
+      <div class="col-lg-8 text-white mb-4">
+        <h2 class="text-white mb-4">{{ self.title }}</h2>
+        {{ self.desc }}
+      </div>
+    </div>
+    {% image self.images format-avif as image_avif %}
+    <img class="img-fluid" srcset="{{ image_avif.url }}" type="image/avif" />
+  </div>
+</section>
