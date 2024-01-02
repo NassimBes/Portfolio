@@ -1,4 +1,3 @@
-
 from django.db import models
 
 from wagtail.models import Page
@@ -27,6 +26,10 @@ class HomePage(Page):
         ("content_block",blk.content_block()),
     ],use_json_field=True,null=False,blank=True)
 
+    userinfoBlock = StreamField([
+        ("user_info_block",blk.user_info_block()),
+    ],use_json_field=True,)
+
     max_count = 1
     content_panels = Page.content_panels + [
         MultiFieldPanel((
@@ -36,8 +39,8 @@ class HomePage(Page):
         ),heading="Headers",classname="collapsed"),
         MultiFieldPanel((
             FieldPanel("contentBlock"),
-        ),heading="Content",classname="collapsed")
-        
+        ),heading="Content",classname="collapsed"),
+        FieldPanel("userinfoBlock"),
     ] 
 
     class Meta:

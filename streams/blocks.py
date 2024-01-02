@@ -1,7 +1,9 @@
 from wagtail import blocks
-from wagtail.blocks import RichTextBlock,BooleanBlock
+from wagtail.blocks import RichTextBlock,BooleanBlock,ChoiceBlock
 from wagtail.images.blocks import ImageChooserBlock
 
+from django import forms
+from django.contrib.auth.models import User
 
 #HEADERS
 class body_block(blocks.StructBlock):
@@ -50,3 +52,24 @@ class content_block(blocks.StructBlock):
 
 
 #FOOTER
+class SomeSortOfIconChooserBlock(blocks.ChooserBlock):
+    target_model = User.objects.all()
+    widget = forms.Select
+
+    class Meta:
+        icon = "icon"
+
+    # Return the key value for the select field
+    def value_for_form(self, value):
+        if isinstance(value, self.target_model):
+            return value.pk
+        else:
+            return value
+
+class user_info_block(blocks.StructBlock):
+    user_block = SomeSortOfIconChooserBlock(required=True)
+    toto=blocks.CharBlock()
+    class Meta:
+        template="homepage/home_page.html"
+        icon="cup"
+        form_classname="userinfo_block"
