@@ -51,24 +51,13 @@ class content_block(blocks.StructBlock):
         form_classname ="contentblock_block"
 
 
-#FOOTER
-class SomeSortOfIconChooserBlock(blocks.ChooserBlock):
-    target_model = User.objects.all()
-    widget = forms.Select
+# #FOOTER
 
-    class Meta:
-        icon = "icon"
 
-    # Return the key value for the select field
-    def value_for_form(self, value):
-        if isinstance(value, self.target_model):
-            return value.pk
-        else:
-            return value
+    
 
 class user_info_block(blocks.StructBlock):
-    user_block = SomeSortOfIconChooserBlock(required=True)
-    toto=blocks.CharBlock()
+    user_block = blocks.ChoiceBlock(required=False)
     class Meta:
         template="homepage/home_page.html"
         icon="cup"

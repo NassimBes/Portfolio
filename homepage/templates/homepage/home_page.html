@@ -4,16 +4,9 @@
 {% block content %}
   {% include_block self.navHeader %}
   <!-- Masthead -->
-  <header class="masthead" id="page-top">
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-      <div class="d-flex justify-content-center">
-        <div class="text-center">
+  
           {% include_block self.homeHeader %}
-          <a class="btn btn-primary" href="#about">Get Started</a>
-        </div>
-      </div>
-    </div>
-  </header>
+          
   <!-- About -->
 
   {% include_block self.bodyHeader %}
@@ -23,8 +16,9 @@
   {% for item in page.contentBlock %}
     {% include_block item %}
   {% endfor %}
-  </div>
-  </section>
+</div>
+</section>
+
 
  <!-- Signup -->
   <section class="signup-section" >

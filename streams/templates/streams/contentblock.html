@@ -1,13 +1,13 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 
 
- 
+
   {% image self.content_image_block format-avif as image_avif %}
     {% if self.content_checkbox_block %}
       <!-- Featured Project Row -->
       <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
         <div class="col-xl-8 col-lg-7">
-          <img class="img-fluid mb-3 mb-lg-0" src="{% static 'assets/img/bg-masthead.jpg' %}" alt="..." />
+          <img class="img-fluid mb-3 mb-lg-0" src="{{image_avif.url}}" alt="..." />
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
@@ -16,8 +16,8 @@
           </div>
         </div>
       </div>
-    {% endif %} 
-      {% if forloop.counter|divisibleby:2 %}
+    {% endif %}
+    {% if forloop.counter|divisibleby:2 %}
       <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
         <div class="col-lg-6">
           <img class="img-fluid" srcset="{{ image_avif.url }}" type="image/avif" />
@@ -56,7 +56,3 @@
         </div>
       </div>
       {% endif %}
-         <!-- Project One Row -->
-        
-        <!-- Project Two Row -->
-
