@@ -2,7 +2,7 @@ from django.db import models
 
 from wagtail.models import Page
 from wagtail.fields import  StreamField
-from wagtail.admin.panels import FieldPanel,MultiFieldPanel,InlinePanel,FieldRowPanel
+from wagtail.admin.panels import FieldPanel,MultiFieldPanel,PageChooserPanel,FieldRowPanel
 
 from streams import blocks as blk
 from wagtail.snippets.models import register_snippet
@@ -12,19 +12,19 @@ class HomePage(Page):
     template = "home_page.html"
     homeHeader = StreamField([
         ("header_block",blk.header_block()),
-        ],use_json_field=True,null=False,blank=True,max_num=1)
+        ],use_json_field=True,null=False,blank=True,max_num=1,collapsed=True)
 
     bodyHeader = StreamField([
         ("body_block",blk.body_block()),
-        ],use_json_field=True,null=False,blank=True,max_num=1)
+        ],use_json_field=True,null=False,blank=True,max_num=1,collapsed=True)
 
     navHeader = StreamField([
         ("nav_block",blk.nav_block()),
-    ],use_json_field=True,null=False,blank=True,max_num=1)
+    ],use_json_field=True,null=False,blank=True,max_num=1,collapsed=True)
 
     contentBlock = StreamField([
         ("content_block",blk.content_block()),
-    ],use_json_field=True,null=False,blank=True)
+    ],use_json_field=True,null=False,blank=True,collapsed=True,max_num=1)
 
     max_count = 1
     content_panels = Page.content_panels + [
@@ -32,10 +32,8 @@ class HomePage(Page):
             FieldPanel("navHeader"),
             FieldPanel("bodyHeader"),
             FieldPanel("homeHeader"),
-        ),heading="Headers",classname="collapsed"),
-        MultiFieldPanel((
-            FieldPanel("contentBlock"),
-        ),heading="Content",classname="collapsed"),
+        ),heading="Headers",classname="collapsible  collapsed"),
+        FieldPanel("contentBlock"),
     ] 
 
     class Meta:
