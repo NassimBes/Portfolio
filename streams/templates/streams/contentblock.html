@@ -1,9 +1,7 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 
-  {% for card in self.cards %}
-
-     {% image card.content_image_block format-avif as image_avif %}
-    {% if card.content_checkbox_block %}
+  {% image self.content_image_block format-avif as image_avif %}
+    {% if self.content_checkbox_block == True %}
       <!-- Featured Project Row -->
       <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
         <div class="col-xl-8 col-lg-7">
@@ -11,16 +9,14 @@
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
-            <h4 class="contenttitle">{{card.content_title}}</h4>
-            <p class="contentabod text-black-50 mb-0">{{card.content_bod|richtext}}</p>
+            <h4 class="contenttitle">{{self.content_title}}</h4>
+            <p class="contentabod text-black-50 mb-0">{{self.content_bod|richtext}}</p>
           </div>
         </div>
       </div>
     {% endif %}
-  {% endfor %}
 
-  {% for card in self.cards %}
-    {% image card.content_image_block format-avif as image_avif %}
+    {% image self.content_image_block format-avif as image_avif %}
     {% if forloop.counter|divisibleby:2 %}
         <div class="row gx-0 justify-content-center">
           <div class="col-lg-6">
@@ -31,8 +27,8 @@
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-left">
                   <div class="text-white">
-                    <h4 >{{card.content_title}}</h4>
-                    <p class="mb-0">{{card.content_bod|richtext}}</p>
+                    <h4 >{{self.content_title}}</h4>
+                    <p class="mb-0">{{self.content_bod|richtext}}</p>
                   </div>
                   <hr class="text-white-50 d-none d-lg-block mb-0 ms-0" />
                 </div>
@@ -50,8 +46,8 @@
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-right">
                   <div class="text-white">
-                    <h4 >{{card.content_title}}</h4>
-                    <p class="mb-0">{{card.content_bod|richtext}}</p>
+                    <h4 >{{self.content_title}}</h4>
+                    <p class="mb-0">{{self.content_bod|richtext}}</p>
                   </div>
                   <hr class="text-white-50 d-none d-lg-block mb-0 me-0" />
                 </div>
@@ -60,4 +56,4 @@
           </div>
         </div>
         {% endif %}
-    {% endfor %}
+ 
