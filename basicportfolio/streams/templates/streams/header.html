@@ -1,0 +1,19 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% image self.images format-avif as image_avif %}
+<header class="masthead" style="background-image:url({{image_avif.url}})"  id="page-top">
+   
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+      <div class="d-flex justify-content-center">
+        <div class="text-center">
+            <h1 class="mx-auto my-0 text-uppercase">
+                {{self.title}}
+            </h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">
+                {{self.desc|richtext}}
+            </h2>
+            <a class="btn btn-primary" href="#about">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>

@@ -1,0 +1,13 @@
+{% load static wagtailimages_tags %}
+<section class="about-section text-center" id="about">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-8 text-white mb-4">
+        <h2 class="text-white mb-4">{{ self.title }}</h2>
+        {{ self.desc }}
+      </div>
+    </div>
+    {% image self.images format-png as image_png %}
+    <img class="img-fluid" srcset="{{ image_png.url }}" type="image/png" />
+  </div>
+</section>

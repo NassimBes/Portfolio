@@ -57,10 +57,16 @@ INSTALLED_APPS = [
     'taggit',
     'debug_toolbar',
     
-    'homepage',
 
-    'streams',
-    
+    #BASIC PORTFOLIO
+    'basicportfolio',
+    'basicportfolio.streams',
+
+
+    #DESIGNER PORTFOLIO
+
+
+    #ENGINEERING PORTFOLIO
 ]
 
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 15 * 1024 * 1024
@@ -92,7 +98,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
                  os.path.join(Path(__file__).resolve().parent, 'templates'),
-                 os.path.join(BASE_DIR, "homepage/templates/homepage"),
+                 os.path.join(BASE_DIR, "basicportfolio/templates/basicportfolio"),
                  os.path.join(BASE_DIR, "streams/templates/streams"),
             ],
         'APP_DIRS': True,
