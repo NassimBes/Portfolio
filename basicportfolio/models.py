@@ -14,23 +14,23 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from wagtail.snippets.models import register_snippet
 
+from MySnippets.models import RSSFeed
+
+# @register_snippet
+# class RSSFeed(models.Model):
+#     title = models.CharField(max_length=25)
+#     github_feed = models.URLField(null=True,blank=True)
+#     lnkIn_feed = models.URLField(null=True,blank=True)
 
 
-@register_snippet
-class RSSFeed(models.Model):
-    title = models.CharField(max_length=25)
-    github_feed = models.URLField(null=True,blank=True)
-    lnkIn_feed = models.URLField(null=True,blank=True)
+#     panels = [
+#         FieldPanel("title"),
+#         FieldPanel("github_feed"),
+#         FieldPanel("lnkIn_feed"),
+#     ]
 
-
-    panels = [
-        FieldPanel("title"),
-        FieldPanel("github_feed"),
-        FieldPanel("lnkIn_feed"),
-    ]
-
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.title
 
 
 class BasicPortfolio(Page):
@@ -66,7 +66,7 @@ class BasicPortfolio(Page):
 
 
     rssfeed = models.ForeignKey(
-        'basicportfolio.RSSFeed',
+        'MySnippets.RSSFeed',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

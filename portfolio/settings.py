@@ -56,7 +56,9 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'debug_toolbar',
-    
+
+    #GLOB CONF
+    'MySnippets',
 
     #BASIC PORTFOLIO
     'basicportfolio',
@@ -64,7 +66,8 @@ INSTALLED_APPS = [
 
 
     #DESIGNER PORTFOLIO
-
+    'designerportfolio',
+    'designerportfolio.designerstreams'
 
     #ENGINEERING PORTFOLIO
 ]
@@ -97,9 +100,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                 os.path.join(Path(__file__).resolve().parent, 'templates'),
-                 os.path.join(BASE_DIR, "basicportfolio/templates/basicportfolio"),
-                 os.path.join(BASE_DIR, "streams/templates/streams"),
+                os.path.join(Path(__file__).resolve().parent, 'templates'),
+                os.path.join(BASE_DIR, "basicportfolio/templates/basicportfolio"),
+                os.path.join(BASE_DIR, "basicportfolio/streams/templates/streams"),
+                os.path.join(BASE_DIR, "designerportfolio/templates/basicportfolio"),
+                os.path.join(BASE_DIR, "designerportfolio/streams/templates/streams"),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -164,7 +169,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'portfolio/static'),
+        os.path.join(BASE_DIR, 'basicportfolio/static'),
     
     ]
 
