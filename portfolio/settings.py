@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-pyv147i(*j&n4ddj-5gws&3%f#c%k_-*av9bone1sb$a7nx%g%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'designerpage.localhost',
+    'localhost',
+    
+]
 
 
 # Application definition
@@ -170,11 +175,15 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'basicportfolio/static'),
-    
+        os.path.join(BASE_DIR, 'designerportfolio/static'),
     ]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, 'basicportfolio/media'),
+    os.path.join(BASE_DIR, 'designerportfolio/media'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
