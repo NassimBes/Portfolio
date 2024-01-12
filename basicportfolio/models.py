@@ -16,21 +16,6 @@ from wagtail.snippets.models import register_snippet
 
 from MySnippets.models import RSSFeed
 
-# @register_snippet
-# class RSSFeed(models.Model):
-#     title = models.CharField(max_length=25)
-#     github_feed = models.URLField(null=True,blank=True)
-#     lnkIn_feed = models.URLField(null=True,blank=True)
-
-
-#     panels = [
-#         FieldPanel("title"),
-#         FieldPanel("github_feed"),
-#         FieldPanel("lnkIn_feed"),
-#     ]
-
-#     def __str__(self):
-#         return self.title
 
 
 class BasicPortfolio(Page):

@@ -1,8 +1,8 @@
 from wagtail import blocks
-from wagtail.blocks import RichTextBlock,BooleanBlock,ChoiceBlock
+from wagtail.blocks import RichTextBlock,BooleanBlock
 from wagtail.images.blocks import ImageChooserBlock
 
-from django.contrib.auth.models import User
+
 
 #HEADERS
 class body_block(blocks.StructBlock):

@@ -7,16 +7,48 @@ from wagtail.models import Page
 from wagtail.fields import  StreamField
 from wagtail.admin.panels import (
     FieldPanel,MultiFieldPanel,
-    TabbedInterface,ObjectList,
+    TabbedInterface,ObjectList,FieldRowPanel
     )
 
 # Create your models here.
-from MySnippets.models import RSSFeed
+from .designerstreams import blocks as blk
+from MySnippets.models import RSSFeed,CreatorName
 
 
 class DesignerPage(Page):
     template = "designerportfolio/index.html"
     designertitle=models.CharField(max_length=25,null=True,blank=True)
+
+
+    #NAV
+    dspghome = models.CharField(max_length=25,blank=True)
+    dspgabout = models.CharField(max_length=25,blank=True)
+    dspgresume = models.CharField(max_length=25,blank=True)
+    dspgportfolio = models.CharField(max_length=25,blank=True)
+    dspgservices = models.CharField(max_length=25,blank=True)
+    dspgcontact = models.CharField(max_length=25,blank=True)
+
+
+    #DSContent
+    _creator = models.ForeignKey(
+        'MySnippets.CreatorName',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+
+    dscontent_block = StreamField([
+        ("dspgaboutblock",blk.AboutBlock()),
+        ("dspgresumeblock",blk.ResumeBlock()),
+        ("dspgportoflioblock",blk.PortfolioBlock()),
+        ("dspgservicesblock",blk.ServicesBlock()),
+        ("dspgcontactblock",blk.ContactBlock()),
+    ],blank=True,null=True,use_json_field=True,collapsed=True)
+
+
+
 
 
 
@@ -32,9 +64,39 @@ class DesignerPage(Page):
         related_name="+",
     )
 
+
+
+
+    #PANELS
     content_panels = Page.content_panels + [
         
     ]
+
+
+    dspgnav_panels = [
+        MultiFieldPanel([
+            FieldPanel("dspghome"),
+            FieldPanel("dspgabout"),
+            FieldPanel("dspgresume"),
+            FieldPanel("dspgportfolio"),
+            FieldPanel("dspgservices"),
+            FieldPanel("dspgcontact"),
+        ]
+        ,heading="Headers",classname="collapsible  collapsed"),
+        
+    ]
+
+    dscontent_panels = [
+        FieldRowPanel([
+            FieldPanel("_creator"),
+            FieldPanel("rss"),
+        ]),
+        MultiFieldPanel([
+            FieldPanel("dscontent_block"),
+        ],heading="Content"),
+        
+    ]
+
 
     user_panels = [
         FieldPanel("email_field"),
@@ -45,6 +107,8 @@ class DesignerPage(Page):
 
     edit_handler = TabbedInterface([
         ObjectList(content_panels,heading='Page Title'),
+        ObjectList(dspgnav_panels,heading='NavBar Content'),
+        ObjectList(dscontent_panels,heading='Homepage Content'),
         ObjectList(user_panels,heading='RSS FEED'),
         ObjectList(Page.promote_panels, heading='Promote'),
         ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
