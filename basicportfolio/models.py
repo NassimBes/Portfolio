@@ -46,7 +46,7 @@ class BasicPortfolio(Page):
 
     #FOOTER
     emails = User.objects.values_list("email","username")
-    email_field= models.CharField(max_length=1000,choices=emails)
+    email_field= models.CharField(max_length=1000,choices=emails,blank=True,null=True)
     phone_field = PhoneNumberField(region="MA",blank=True)
 
 

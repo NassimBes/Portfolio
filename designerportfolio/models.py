@@ -29,8 +29,10 @@ class DesignerPage(Page):
     dspgcontact = models.CharField(max_length=25,blank=True)
 
 
+
+
     #DSContent
-    _creator = models.ForeignKey(
+    _creatorname = models.ForeignKey(
         'MySnippets.CreatorName',
         null=True,
         blank=True,
@@ -69,12 +71,7 @@ class DesignerPage(Page):
 
     #PANELS
     content_panels = Page.content_panels + [
-        
-    ]
-
-
-    dspgnav_panels = [
-        MultiFieldPanel([
+        FieldRowPanel([
             FieldPanel("dspghome"),
             FieldPanel("dspgabout"),
             FieldPanel("dspgresume"),
@@ -83,13 +80,12 @@ class DesignerPage(Page):
             FieldPanel("dspgcontact"),
         ]
         ,heading="Headers",classname="collapsible  collapsed"),
-        
     ]
+
 
     dscontent_panels = [
         FieldRowPanel([
-            FieldPanel("_creator"),
-            FieldPanel("rss"),
+            FieldPanel("_creatorname"),
         ]),
         MultiFieldPanel([
             FieldPanel("dscontent_block"),
@@ -107,7 +103,7 @@ class DesignerPage(Page):
 
     edit_handler = TabbedInterface([
         ObjectList(content_panels,heading='Page Title'),
-        ObjectList(dspgnav_panels,heading='NavBar Content'),
+        # ObjectList(dspgnav_panels,heading='NavBar Content'),
         ObjectList(dscontent_panels,heading='Homepage Content'),
         ObjectList(user_panels,heading='RSS FEED'),
         ObjectList(Page.promote_panels, heading='Promote'),

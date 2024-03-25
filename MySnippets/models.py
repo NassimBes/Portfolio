@@ -1,5 +1,5 @@
 from wagtail.snippets.models import register_snippet
-from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import FieldPanel,FieldRowPanel
 from wagtail.fields import RichTextField
 
 from django.db import models
@@ -27,12 +27,14 @@ class RSSFeed(models.Model):
 @register_snippet
 class CreatorName(models.Model):
     title = models.CharField(max_length=25)
-    first_last_name = RichTextField(features=["bold","italic"])
-    
-
+    first_last_name = models.CharField(max_length=25,blank=True,null=True)
+    job_title = RichTextField(features=["bold","italic"],blank=True,null=True)
     panels = [
         FieldPanel("title"),
-        FieldPanel("first_last_name"),
+        FieldRowPanel([
+            FieldPanel("first_last_name"),
+            FieldPanel("job_title"),
+        ])
     ]
     
 
