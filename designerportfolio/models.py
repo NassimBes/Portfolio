@@ -12,7 +12,7 @@ from wagtail.admin.panels import (
 
 # Create your models here.
 from .designerstreams import blocks as blk
-from MySnippets.models import RSSFeed,CreatorName
+from MySnippets.models import RSSFeed,CreatorName,ModalShortcuts
 
 
 class DesignerPage(Page):
@@ -21,13 +21,20 @@ class DesignerPage(Page):
 
 
     #NAV
-    dspghome = models.CharField(max_length=25,blank=True)
-    dspgabout = models.CharField(max_length=25,blank=True)
-    dspgresume = models.CharField(max_length=25,blank=True)
-    dspgportfolio = models.CharField(max_length=25,blank=True)
-    dspgservices = models.CharField(max_length=25,blank=True)
-    dspgcontact = models.CharField(max_length=25,blank=True)
+    # dspghome = models.CharField(max_length=25,blank=True)
+    # dspgabout = models.CharField(max_length=25,blank=True)
+    # dspgresume = models.CharField(max_length=25,blank=True)
+    # dspgportfolio = models.CharField(max_length=25,blank=True)
+    # dspgservices = models.CharField(max_length=25,blank=True)
+    # dspgcontact = models.CharField(max_length=25,blank=True)
 
+    _modalshortcuts= models.ForeignKey(
+        'MySnippets.ModalShortcuts',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
 
 
@@ -72,12 +79,12 @@ class DesignerPage(Page):
     #PANELS
     content_panels = Page.content_panels + [
         FieldRowPanel([
-            FieldPanel("dspghome"),
-            FieldPanel("dspgabout"),
-            FieldPanel("dspgresume"),
-            FieldPanel("dspgportfolio"),
-            FieldPanel("dspgservices"),
-            FieldPanel("dspgcontact"),
+            FieldPanel("_modalshortcuts"),
+            # FieldPanel("dspgabout"),
+            # FieldPanel("dspgresume"),
+            # FieldPanel("dspgportfolio"),
+            # FieldPanel("dspgservices"),
+            # FieldPanel("dspgcontact"),
         ]
         ,heading="Headers",classname="collapsible  collapsed"),
     ]
