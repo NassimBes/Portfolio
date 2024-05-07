@@ -28,7 +28,7 @@ class DesignerPage(Page):
     # dspgservices = models.CharField(max_length=25,blank=True)
     # dspgcontact = models.CharField(max_length=25,blank=True)
 
-    _modalshortcuts= models.ForeignKey(
+    modalshortcuts= models.ForeignKey(
         'MySnippets.ModalShortcuts',
         null=True,
         blank=True,
@@ -39,7 +39,7 @@ class DesignerPage(Page):
 
 
     #DSContent
-    _creatorname = models.ForeignKey(
+    creatorname = models.ForeignKey(
         'MySnippets.CreatorName',
         null=True,
         blank=True,
@@ -79,7 +79,7 @@ class DesignerPage(Page):
     #PANELS
     content_panels = Page.content_panels + [
         FieldRowPanel([
-            FieldPanel("_modalshortcuts"),
+            FieldPanel("modalshortcuts"),
             # FieldPanel("dspgabout"),
             # FieldPanel("dspgresume"),
             # FieldPanel("dspgportfolio"),
@@ -92,7 +92,7 @@ class DesignerPage(Page):
 
     dscontent_panels = [
         FieldRowPanel([
-            FieldPanel("_creatorname"),
+            FieldPanel("creatorname"),
         ]),
         MultiFieldPanel([
             FieldPanel("dscontent_block"),

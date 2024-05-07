@@ -37,7 +37,6 @@ class RSSFeed(models.Model):
 class CreatorName(models.Model):
     title = models.CharField(max_length=25)
     first_last_name = models.CharField(max_length=25,blank=True,null=True)
-    # job_title = RichTextField(features=["bold","italic"],blank=True,null=True)
     job_title = models.CharField(max_length=250,blank=True,null=True)
     panels = [
         FieldPanel("title"),
