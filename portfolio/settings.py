@@ -28,10 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'designerpage.localhost',
     'designerpage',
+    'designerpage.localhost',
     'localhost',
-    
 ]
 
 
