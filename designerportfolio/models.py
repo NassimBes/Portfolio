@@ -30,32 +30,7 @@ class DesignerPage(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-    
-    content_panels = Page.content_panels + [
-        FieldRowPanel([
-            FieldPanel("modalshortcuts"),
-        ]
-        ,heading="Headers",classname="collapsible  collapsed"),
-    ]
 
-    #BODY (RESUME/PORTFOLIO/SERVICES/TESTIMONIALS)
-    dscontent_block = StreamField([
-        ("dspgaboutblock",blk.AboutBlock()),
-        ("dspgresumeblock",blk.ResumeBlock()),
-        ("dspgportoflioblock",blk.PortfolioBlock()),
-        ("dspgservicesblock",blk.ServicesBlock()),
-        ("dspgcontactblock",blk.ContactBlock()),
-    ],blank=True,null=True,use_json_field=True,collapsed=True)
-
-    dscontent_panels = [
-        MultiFieldPanel([
-            FieldPanel("dscontent_block"),
-        ],heading="Content"),
-        
-    ]
-
-
-    #FOOTER (CreatorName Info/Contact & RssFEED)
     creatorname = models.ForeignKey(
         'MySnippets.CreatorName',
         null=True,
@@ -71,13 +46,42 @@ class DesignerPage(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
-
-    user_panels = [
+    
+    content_panels = Page.content_panels + [
         FieldRowPanel([
-            FieldPanel("creatorname"),
+            FieldPanel("modalshortcuts"),
             FieldPanel("rss"),
-        ],heading="Creator Info",classname="collapsible  collapsed"),
+            FieldPanel('creatorname'),
+        ]
+        ,heading="User & Page Info",classname="collapsible  collapsed"),
     ]
+
+    #BODY (RESUME/PORTFOLIO/SERVICES/TESTIMONIALS)
+    # dscontent_block = StreamField([
+    #     ("dspgaboutblock",blk.AboutBlock()),
+    #     ("dspgresumeblock",blk.ResumeBlock()),
+    #     ("dspgportoflioblock",blk.PortfolioBlock()),
+    #     ("dspgservicesblock",blk.ServicesBlock()),
+    #     ("dspgcontactblock",blk.ContactBlock()),
+    # ],blank=True,null=True,use_json_field=True,collapsed=True)
+
+    about_section = StreamField([
+        ("about_block",blk.AboutBlock()),
+        ("resume_block",blk.ResumeBlock()),
+    ],use_json_field=True,null=False,blank=True,max_num=1,collapsed=True)
+
+    dscontent_panels = [
+        MultiFieldPanel([
+            FieldPanel('about_section'),
+        ],heading="Content"),
+        
+    ]
+
+
+    #FOOTER (CreatorName Info/Contact & RssFEED)
+
+
+
 
 
     #BackEnd (Editor/Visualisor)
@@ -85,7 +89,6 @@ class DesignerPage(Page):
         ObjectList(content_panels,heading='Page Title'),
         # ObjectList(dspgnav_panels,heading='NavBar Content'),
         ObjectList(dscontent_panels,heading='Homepage Content'),
-        ObjectList(user_panels,heading='RSS FEED'),
         ObjectList(Page.promote_panels, heading='Promote'),
         ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     ])
