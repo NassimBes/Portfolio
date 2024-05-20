@@ -23,9 +23,19 @@ class AboutBlock(blocks.StructBlock):
         icon = "wagtail-icon"
         # form_classname = "navblock_block"
 
+class SkillBlock(blocks.StructBlock):
+    skill_name = blocks.CharBlock(max_length=25)
+    skill_expertise = blocks.IntegerBlock()
+    class Meta:
+        template="designerstreams/skills.html"
+        icon = "wagtail-icon"
 
 class ResumeBlock(blocks.StructBlock):
-    pass
+    resume_motivation = RichTextBlock()
+    
+    class Meta:
+        template="designerstreams/resume.html"
+        icon = "wagtail-icon"
 
 
 class PortfolioBlock(blocks.StructBlock):

@@ -56,24 +56,31 @@ class DesignerPage(Page):
         ,heading="User & Page Info",classname="collapsible  collapsed"),
     ]
 
-    #BODY (RESUME/PORTFOLIO/SERVICES/TESTIMONIALS)
-    # dscontent_block = StreamField([
-    #     ("dspgaboutblock",blk.AboutBlock()),
-    #     ("dspgresumeblock",blk.ResumeBlock()),
-    #     ("dspgportoflioblock",blk.PortfolioBlock()),
-    #     ("dspgservicesblock",blk.ServicesBlock()),
-    #     ("dspgcontactblock",blk.ContactBlock()),
-    # ],blank=True,null=True,use_json_field=True,collapsed=True)
 
+
+    #BODY Content
     about_section = StreamField([
         ("about_block",blk.AboutBlock()),
+    ],use_json_field=True,null=False,max_num=1,blank=True,collapsed=True)
+
+    resume_section = StreamField([
         ("resume_block",blk.ResumeBlock()),
-    ],use_json_field=True,null=False,blank=True,max_num=1,collapsed=True)
+
+    ],use_json_field=True,null=False,blank=True,collapsed=True)
+
+    skill_section = StreamField([
+        ("skills_block",blk.SkillBlock()),
+    ],use_json_field=True,null=False,blank=True,collapsed=True)
 
     dscontent_panels = [
+        FieldPanel('about_section',heading="About"),
+        
         MultiFieldPanel([
-            FieldPanel('about_section'),
-        ],heading="Content"),
+            FieldRowPanel([
+                FieldPanel('resume_section'),
+                FieldPanel('skill_section'),
+            ])
+        ],heading="Resume"),
         
     ]
 
