@@ -2,7 +2,7 @@
 media/*
 
 */migrations/*
-*/__pycache__/*
+*__pycache__*
 
 env
 env/*

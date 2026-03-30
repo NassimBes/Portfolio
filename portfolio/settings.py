@@ -27,8 +27,10 @@ SECRET_KEY = 'django-insecure-pyv147i(*j&n4ddj-5gws&3%f#c%k_-*av9bone1sb$a7nx%g%
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'designerpage',
+    # '127.0.0.1',
+    # 'basicfolio',
+    'basicfolio.localhost',
+    # 'designerpage',
     'designerpage.localhost',
     'localhost',
 ]
@@ -71,7 +73,7 @@ INSTALLED_APPS = [
     'basicportfolio.streams',
 
 
-    #DESIGNER PORTFOLIO
+    # #DESIGNER PORTFOLIO
     'designerportfolio',
     'designerportfolio.designerstreams'
 
