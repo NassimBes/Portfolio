@@ -37,8 +37,8 @@ class nav_block(blocks.StructBlock):
         icon = "wagtail-icon"
         form_classname = "navblock_block"
 
-#BODY
 
+#BODY
 class content_block(blocks.StructBlock):
     
     content_title=blocks.CharBlock(required=True,max_length=15,help_text="Project name")

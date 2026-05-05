@@ -1,6 +1,36 @@
-{% for it in  page.user_panels.rss  %}
+{{ page.rssfeed }}
+{% if page.rssfeed %}
   <div id="contact" class="social d-flex justify-content-center">
-    <a class="mx-2" style="font-size: 50px;" href="{{it.github_feed}}"><i class="fab fa-linkedin myicons"></i></a>
-    <a class="mx-2" style="font-size: 50px;" href="{{it.lnkIn_feed}}"><i class="fab fa-github myicons"></i></a>
+
+    {% if page.rssfeed.github_feed %}
+      <a class="mx-2" style="font-size: 50px;" href="{{ page.rssfeed.github_feed }}">
+        <i class="fab fa-github myicons"></i>
+      </a>
+    {% endif %}
+
+    {% if page.rssfeed.gitea_feed %}
+      <a class="mx-2" style="font-size: 50px;" href="{{ page.rssfeed.gitea_feed }}">
+        <i class="fab fa-gitee myicons"></i>
+      </a>
+    {% endif %}
+
+    {% if page.rssfeed.linkedIn_feed %}
+      <a class="mx-2" style="font-size: 50px;" href="{{ page.rssfeed.linkedIn_feed }}">
+        <i class="fab fa-linkedin myicons"></i>
+      </a>
+    {% endif %}
+
+    {% if page.rssfeed.facebook_feed %}
+      <a class="mx-2" style="font-size: 50px;" href="{{ page.rssfeed.facebook_feed }}">
+        <i class="fab fa-facebook myicons"></i>
+      </a>
+    {% endif %}
+
+    {% if page.rssfeed.twitter_feed %}
+      <a class="mx-2" style="font-size: 50px;" href="{{ page.rssfeed.twitter_feed }}">
+        <i class="fab fa-twitter myicons"></i>
+      </a>
+    {% endif %}
+
   </div>
-{% endfor %}
+{% endif %}

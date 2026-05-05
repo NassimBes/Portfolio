@@ -30,21 +30,28 @@ class SkillBlock(blocks.StructBlock):
         template="designerstreams/skills.html"
         icon = "wagtail-icon"
 
-class ResumeBlock(blocks.StructBlock):
-    resume_motivation = RichTextBlock()
+class ResumeEducationBlock(blocks.StructBlock):
+    resume_education = RichTextBlock()
     
     class Meta:
-        template="designerstreams/resume.html"
+        template="designerstreams/education.html"
+        icon = "wagtail-icon"
+
+class ResumeExperienceBlock(blocks.StructBlock):
+    resume_proexp = RichTextBlock()
+    
+    class Meta:
+        template="designerstreams/experience.html"
         icon = "wagtail-icon"
 
 
-class PortfolioBlock(blocks.StructBlock):
-    pass
+# class PortfolioBlock(blocks.StructBlock):
+#     pass
 
 
-class ServicesBlock(blocks.StructBlock):
-    pass
+# class ServicesBlock(blocks.StructBlock):
+#     pass
 
 
-class ContactBlock(blocks.StructBlock):
-    pass
+# class ContactBlock(blocks.StructBlock):
+#     pass

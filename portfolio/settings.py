@@ -28,9 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     # '127.0.0.1',
-    # 'basicfolio',
+    'basicfolio',
     'basicfolio.localhost',
-    # 'designerpage',
+    'designerpage',
     'designerpage.localhost',
     'localhost',
 ]
@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'taggit',
     'debug_toolbar',
     'jsonfield',
+    'django_countries',
 
     #GLOB CONF
     'MySnippets',
